@@ -1,14 +1,15 @@
 class SongsController < ApplicationController
+
   def index
     if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
       if @artist.nil?
         redirect_to artists_path, alert: "Artist not found"
       else
-        @songs = @artist.songs.order(title: Preference.first.song_sort_order)
+        @songs = @artist.songs.order(title: (Preference.first ? Preference.first.song_sort_order : "ASC"))
       end
     else
-      @songs = Song.order(title: Preference.first.song_sort_order) 
+      @songs = Song.order(title: (Preference.first ? Preference.first.song_sort_order : "ASC"))
     end
   end
 
