@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.order(name: (Preference.first ? Preference.first.artist_sort_order : "ASC"))
   end
 
   def show
@@ -8,12 +8,12 @@ class ArtistsController < ApplicationController
   end
 
   def new
+    redirect_to artists_path if not Preference.first.allow_create_artists
     @artist = Artist.new
   end
 
   def create
     @artist = Artist.new(artist_params)
-
     if @artist.save
       redirect_to @artist
     else
@@ -27,9 +27,7 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-
     @artist.update(artist_params)
-
     if @artist.save
       redirect_to @artist
     else
