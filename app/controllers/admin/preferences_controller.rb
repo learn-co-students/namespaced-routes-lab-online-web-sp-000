@@ -1,6 +1,6 @@
 class Admin::PreferencesController < ApplicationController
   def index
-    @preferences = Preference.first_or_create(allow_create_artists: true, allow_create_songs: true, song_sort_order: "DESC", artist_sort_order: "DESC")
+    @preference = Preference.first_or_create(allow_create_artists: true, allow_create_songs: true, song_sort_order: "DESC", artist_sort_order: "DESC")
   end
 
   def update
