@@ -1,16 +1,12 @@
 class Song < ActiveRecord::Base
-  belongs_to :artist
+  belongs_to :artist, optional: true
 
   def artist_name
     self.try(:artist).try(:name)
   end
 
   def artist_name=(name)
-    if name == "" || name.nil?
-      self.artist = nil
-    else
-      artist = Artist.find_or_create_by(name: name) 
-      self.artist = artist
-    end
+    artist = Artist.find_or_create_by(name: name) 
+    self.artist = artist
   end
 end
