@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
+Preference.create(artist_sort_order:"ASC", song_sort_order:"DESC", allow_create_artists: false, allow_create_songs:false)
+
 songs = [{artist_name: "The Killers", title: "Mr. Brightside"},
          {artist_name: "The Killers", title: "Jenny Was a Friend of Mine"},
          {artist_name: "Tommy Tutone", title: "Jenny"},
