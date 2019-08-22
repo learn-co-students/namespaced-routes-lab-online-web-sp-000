@@ -1,5 +1,11 @@
 class SongsController < ApplicationController
   def index
+    begin
+      sort_order = Preference.last.song_sort_order
+    rescue NoMethodError => e
+      sort_order = nil
+    end
+
     if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
       if @artist.nil?
@@ -9,6 +15,14 @@ class SongsController < ApplicationController
       end
     else
       @songs = Song.all
+    end
+
+    if !@songs.nil?
+      if !sort_order.nil? && sort_order == 'DESC'
+        @songs.sort_by { |song| song.title }.reverse
+      else
+        @songs.sort_by { |song| song.title }
+      end
     end
   end
 
@@ -25,6 +39,16 @@ class SongsController < ApplicationController
   end
 
   def new
+    begin
+      allow_create = Preference.last.allow_create_songs
+    rescue NoMethodError => e
+      allow_create = nil
+    end
+    
+    if !allow_create
+      redirect_to songs_path
+    end
+
     @song = Song.new
   end
 
