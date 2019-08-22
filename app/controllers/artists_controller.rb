@@ -1,6 +1,18 @@
 class ArtistsController < ApplicationController
   def index
+    begin
+      sort_order = Preference.last.artist_sort_order
+    rescue NoMethodError => e
+      sort_order = nil
+    end
+
     @artists = Artist.all
+    if !sort_order.nil? && sort_order == 'DESC'
+      @artists.sort_by { |artist| artist.name }.reverse
+    else
+      @artists.sort_by { |artist| artist.name }
+    end
+
   end
 
   def show
@@ -8,6 +20,16 @@ class ArtistsController < ApplicationController
   end
 
   def new
+    begin
+      allow_create = Preference.last.allow_create_artist
+    rescue NoMethodError => e
+      allow_create = nil
+    end
+
+    if !allow_create
+      redirect_to artists_path
+    end
+    
     @artist = Artist.new
   end
 
