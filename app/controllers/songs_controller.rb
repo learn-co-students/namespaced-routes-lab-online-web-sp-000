@@ -10,6 +10,11 @@ class SongsController < ApplicationController
     else
       @songs = Song.all
     end
+
+    preference = Preference.first
+    @songs = @songs.sort_by{|song| song.title} if preference
+    @songs = @songs.reverse if preference && preference.song_sort_order == "DESC"
+    @songs
   end
 
   def show
@@ -25,7 +30,11 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
+    if Preference.first.allow_create_songs
+      @song = Song.new
+    else
+      redirect_to songs_path
+    end
   end
 
   def create
@@ -67,4 +76,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name)
   end
 end
-
