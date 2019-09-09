@@ -1,0 +1,11 @@
+<h1>Preferences</h1>
+<label>Song Sort Order: </label><br>
+<%= @preference.song_sort_order %><br>
+<label>Artist Sort Order: </label><br>
+<%= @preference.artist_sort_order %><br>
+<label>Allow Song Creation: </label><br>
+<%= @preference.allow_create_songs %><br>
+<label>Allow Artist Creation: </label><br>
+<%= @preference.allow_create_artists %><br>
+<br>
+<%= link_to 'Edit Preferences', edit_admin_preference_path(@preference) %>

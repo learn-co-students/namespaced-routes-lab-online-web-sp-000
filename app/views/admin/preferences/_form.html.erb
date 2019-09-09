@@ -1,0 +1,16 @@
+<%= form_for [:admin, @preference] do |f| %>
+
+  <label>Song Sort Order:</label><br>
+  <%= f.select :song_sort_order, @sort_choices %><br>
+
+  <label>Artist Sort Order</label><br>
+  <%= f.select :artist_sort_order, @sort_choices %><br>
+
+  <label>Allow Song Creation</label><br>
+  <%= f.check_box :allow_create_songs %><br>
+
+  <label>Allow Artist Creation</label><br>
+  <%= f.check_box :allow_create_artists %><br>
+
+  <%= f.submit %>
+<% end %>
