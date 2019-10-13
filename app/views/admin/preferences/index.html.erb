@@ -1,0 +1,19 @@
+<h2>Your Preferences</h2>
+
+<%= form_for [:admin, @preference] do |f| %>
+    <h3>Order of Songs</h3>
+    DESC: <%= f.radio_button :song_sort_order, "DESC" %>
+    ASC: <%= f.radio_button :song_sort_order, "ASC" %>
+
+    <h3>Order of Artists</h3>
+    DESC: <%= f.radio_button :artist_sort_order, "DESC" %>
+    ASC: <%= f.radio_button :artist_sort_order, "ASC" %>
+
+    <h3>Create New Songs?</h3>
+    <p>Check if yes: <%= f.check_box :allow_create_songs %></p>
+
+    <h3>Create New Artists?</h3>
+    <p>Check if yes: <%= f.check_box :allow_create_artists %></p>
+
+    <%= f.submit %>
+<% end %>
