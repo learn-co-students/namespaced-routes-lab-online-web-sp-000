@@ -2,7 +2,7 @@ class Admin::PreferencesController < ApplicationController
 
 
     def index
-        @prefernces = Preference.all
+        @preferences = Preference.all
     end
     
 
