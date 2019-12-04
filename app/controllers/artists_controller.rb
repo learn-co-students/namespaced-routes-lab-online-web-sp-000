@@ -1,3 +1,4 @@
+require 'pry'
 class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
@@ -9,6 +10,11 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
+    @preference = Preference.find_by(id: params[:id])
+    if @preference.nil?
+      redirect_to artists_path 
+    end  
+
   end
 
   def create

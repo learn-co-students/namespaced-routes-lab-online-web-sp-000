@@ -26,6 +26,10 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @preference = Preference.find_by(id: params[:id])
+    if @preference.nil?
+      redirect_to songs_path 
+    end 
   end
 
   def create
