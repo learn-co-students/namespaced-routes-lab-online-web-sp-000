@@ -1,0 +1,12 @@
+<h1>Create a Preference</h1>
+
+<%= form_for @preference do |f| %>
+
+  <%= f.label :allow_create_songs %>
+  <%= f.text_field :allow_create_songs %>
+  <br>
+  <%= f.label :allow_create_artists %>
+  <%= f.text_field :allow_create_artists %>
+  <br>
+  <%= f.submit %>
+<% end %>
