@@ -1,0 +1,17 @@
+<h1>Preferences:</h1>
+
+<h3>Allow Song Creation</h3>
+<%= form_tag do %>
+<%= radio_button_tag(:allow_create_songs, true) %>
+<%= label_tag(:allow_create_songs_on, "ON") %>
+<%= radio_button_tag(:allow_create_songs, false) %>
+<%= label_tag(:allow_create_songs_off, "OFF") %>
+<% end %>
+
+<h3>Allow Artist Creation</h3>
+<%= form_tag do %>
+<%= radio_button_tag(:allow_create_artists, true) %>
+<%= label_tag(:allow_create_artists_on, "ON") %>
+<%= radio_button_tag(:allow_create_artists, false) %>
+<%= label_tag(:allow_create_artists_off, "OFF") %>
+<% end %>
