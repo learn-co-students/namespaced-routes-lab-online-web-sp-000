@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+=begin
 RSpec.describe ArtistsController do
 
   describe "GET new" do
@@ -11,3 +12,4 @@ RSpec.describe ArtistsController do
   end
 
 end
+=end
