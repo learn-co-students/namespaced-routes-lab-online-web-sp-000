@@ -10,6 +10,14 @@ class SongsController < ApplicationController
     else
       @songs = Song.all
     end
+
+    if @preference
+      if @preference.song_sort_order = "ASC"
+        @songs.sort_by!{|song| song.title}
+      else
+        @songs.sort_by!{|song| song.title}.reverse
+      end
+    end
   end
 
   def show
@@ -25,7 +33,12 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
+    @preference = Preference.first
+    if @preference.allow_create_songs
+      @song = Song.new
+    else
+      redirect_to songs_path
+    end
   end
 
   def create
