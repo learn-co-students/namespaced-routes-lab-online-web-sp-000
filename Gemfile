@@ -15,6 +15,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'shotgun'
 end
 
 group :development do
