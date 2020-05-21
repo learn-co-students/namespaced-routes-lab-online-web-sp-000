@@ -39,7 +39,7 @@ class SongsController < ApplicationController
       render :new
     end
   end
-S
+
   def edit
     @song = Song.find(params[:id])
   end
