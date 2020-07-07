@@ -1,5 +1,7 @@
 
 class Preference < ActiveRecord::Base
-  has_many :songs
-  has_many :artists
+  #applicationrecord allows us to use this as a single point of entry by creating this model - we would have to create this other model:
+  # class ApplicationRecord < ActiveRecord::Base
+  # self.abstract_class = true
+  # end
 end
