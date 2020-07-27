@@ -1,4 +1,6 @@
 class ArtistsController < ApplicationController
+  before_action :set_preferences, only: [:index, :new]
+
   def index
     @artists = Artist.all
   end
@@ -7,8 +9,14 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
   end
 
+  # check that creating new songs or artists is enabled,
+  # and redirect to /artists if that preference is disabled.
   def new
-    @artist = Artist.new
+    if @preferences && @preferences.allow_create_artists == false
+      redirect_to artists_path
+    else
+      @artist = Artist.new
+    end
   end
 
   def create
@@ -48,5 +56,9 @@ class ArtistsController < ApplicationController
 
   def artist_params
     params.require(:artist).permit(:name)
+  end
+
+  def set_preferences
+    @preferences = Preference.first
   end
 end
