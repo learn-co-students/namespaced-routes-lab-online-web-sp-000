@@ -8,10 +8,13 @@ class ArtistsController < ApplicationController
   end
 
   def new
+    # binding.pry
+    redirect_to artists_path if !Preference.all.first[:allow_create_artists]
     @artist = Artist.new
   end
 
   def create
+
     @artist = Artist.new(artist_params)
 
     if @artist.save
