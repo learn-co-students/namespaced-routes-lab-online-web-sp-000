@@ -8,7 +8,13 @@ class ArtistsController < ApplicationController
   end
 
   def new
-    @artist = Artist.new
+    # check that creating new songs or artists is enabled, 
+    if params.permitted?
+      @artist = Artist.new
+    else 
+      # and redirect to /songs and /artists, respectively, if that preference is disabled.
+      redirect_to artists_path
+    end 
   end
 
   def create
