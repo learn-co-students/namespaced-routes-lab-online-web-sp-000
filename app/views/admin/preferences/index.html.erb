@@ -1,1 +1,6 @@
-<% binding.pry %>
+<h1>Preference Settings:</h1>
+<p>
+    Allow Create Songs: <%= Preference.first.allow_create_songs %><br>
+    Allow Create Artists: <%= Preference.first.allow_create_artists %><br>
+</p>
+
