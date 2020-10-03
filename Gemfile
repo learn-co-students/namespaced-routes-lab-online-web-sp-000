@@ -8,6 +8,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootsnap'
 gem 'sassc'
+gem 'execjs'
+gem 'therubyracer'
 gem "actionview", ">= 5.0.7.2"
 
 group :development, :test do
