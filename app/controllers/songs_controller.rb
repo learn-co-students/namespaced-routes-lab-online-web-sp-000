@@ -25,7 +25,13 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
+    @preference = Preference.create
+    if !@preference[:allow_create_songs]
+      flash[:alert] = "Access not granted"
+      redirect_to songs_path
+    else
+      @song = Song.new
+    end
   end
 
   def create
