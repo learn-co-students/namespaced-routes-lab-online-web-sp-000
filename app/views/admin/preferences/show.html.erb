@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Allow create artists:</strong>
+  <%= @preference.allow_create_artists %>
+</p>
+
+<p>
+  <strong>Allow create songs:</strong>
+  <%= @preference.allow_create_songs %>
+</p>
+
+<%= link_to 'Edit', edit_preference_path(@preference) %> |
+<%= link_to 'Back', preferences_path %>
