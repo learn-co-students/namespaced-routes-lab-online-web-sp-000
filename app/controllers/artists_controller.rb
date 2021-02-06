@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
   end
 
+  # modify this instance method.
   def new
     @artist = Artist.new
   end

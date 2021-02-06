@@ -24,6 +24,7 @@ class SongsController < ApplicationController
     end
   end
 
+  # modify this instance method.
   def new
     @song = Song.new
   end
