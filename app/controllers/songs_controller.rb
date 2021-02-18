@@ -25,7 +25,11 @@ class SongsController < ApplicationController
   end
 
   def new
+    if Preference.first.allow_create_songs
     @song = Song.new
+  else 
+    redirect_to songs_path
+  end
   end
   # def new
   #   if params[:author_id] && !Author.exists?(params[:author_id])
