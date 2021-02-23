@@ -25,7 +25,13 @@ class SongsController < ApplicationController
   end
 
   def new
+    @preference = Preference.first 
+    #Find the preference; since it's a model that should have only one instance, preference.first should work
+    if @preference.allow_create_songs == false
+      redirect_to songs_path
+    else 
     @song = Song.new
+    end 
   end
 
   def create

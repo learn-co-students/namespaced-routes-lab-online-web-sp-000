@@ -1,3 +1,4 @@
+require 'pry'
 class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
@@ -8,7 +9,13 @@ class ArtistsController < ApplicationController
   end
 
   def new
+    @preference = Preference.first 
+    #Find the preference; since it's a model that should have only one instance, preference.first should work
+    if @preference.allow_create_artists == false 
+      redirect_to artists_path 
+    else 
     @artist = Artist.new
+    end 
   end
 
   def create
