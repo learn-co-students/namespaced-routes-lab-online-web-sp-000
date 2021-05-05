@@ -1,0 +1,9 @@
+<%= form_for(@prefence) do |f| %>
+    <%= f.label :allow_create_artists %><br>
+    <%= f.check_box :allow_create_artists %><br>
+
+    <%= f.label :allow_create_songs %><br>
+    <%= f.check_box :allow_create_songs %><br>
+
+    <%= f.submit %>
+<% end %>
