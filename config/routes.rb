@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :songs
 
   namespace :admin do
-    resources :stats, only: [:index, :show]
+    resources :preferences
   end
 end
